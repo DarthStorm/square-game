@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsyabwpoxyke8"]
+
+[ext_resource type="PackedScene" uid="uid://w2025bbkjl1q" path="res://scenes/levels/bullet_hell.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ca6sxrjvebv1q" path="res://scenes/UI.tscn" id="6_p57ef"]
+
+[node name="Game" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("6_p57ef")]
+visible = false
+
+[node name="Level" parent="." instance=ExtResource("2_yqjtg")]

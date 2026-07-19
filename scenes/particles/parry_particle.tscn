@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwnu4eh87ssm8"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrf7l"]
+particle_flag_disable_z = true
+angle_min = -180.0
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 2.0
+
+[node name="ParryParticle" type="GPUParticles2D"]
+modulate = Color(0.657476, 0.00224771, 0.872735, 1)
+emitting = false
+amount = 4
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mrf7l")

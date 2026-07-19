@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bll37h1vygnpd"]
+
+[ext_resource type="Script" uid="uid://cnbkyo2njg2fb" path="res://scripts/coin_display.gd" id="1_6qwn5"]
+[ext_resource type="Texture2D" uid="uid://3iudypb6p7vp" path="res://assets/textures/collectibles/coin.png" id="1_hv3hf"]
+[ext_resource type="Theme" uid="uid://o4k7cbp4wtsm" path="res://themes/main.tres" id="2_baxa6"]
+
+[node name="CoinDisplay" type="Control" unique_id=1400965315]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -912.0
+offset_bottom = -608.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6qwn5")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=333302940]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource("1_hv3hf")
+
+[node name="Label" type="Label" parent="." unique_id=1413306920]
+layout_mode = 0
+offset_left = 60.0
+offset_right = 240.0
+offset_bottom = 40.0
+theme = ExtResource("2_baxa6")
+text = "0"
+vertical_alignment = 1

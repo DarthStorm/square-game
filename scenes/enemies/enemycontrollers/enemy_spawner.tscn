@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsw6qs3bes6fs"]
+
+[ext_resource type="Script" uid="uid://cspdj15fuu5k1" path="res://scripts/game/enemy/enemy_spawner.gd" id="1_a68nv"]
+[ext_resource type="Texture2D" uid="uid://c6t5ednntdls5" path="res://assets/textures/enemies/portal.png" id="2_a68nv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a68nv"]
+atlas = ExtResource("2_a68nv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arx8x"]
+atlas = ExtResource("2_a68nv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ysmh"]
+atlas = ExtResource("2_a68nv")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v3knk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a68nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arx8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ysmh")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_a68nv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v3knk")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.81722

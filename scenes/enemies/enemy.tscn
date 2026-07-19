@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://iulxd3jlvfkm"]
+
+[ext_resource type="Script" uid="uid://kva1uhve2hd4" path="res://scripts/game/enemy/enemy.gd" id="1_38ino"]
+[ext_resource type="Texture2D" uid="uid://cj7jxwu1w7ye" path="res://assets/textures/enemies/enemy.png" id="2_fcftc"]
+[ext_resource type="PackedScene" uid="uid://b4kcops3qy22j" path="res://scenes/ui/health_bar.tscn" id="3_lu5c6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fcftc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(16, 16)
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_38ino")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qhqgy")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_lu5c6")]
+offset_top = -14.0
+offset_bottom = -14.0
+
+[node name="RayCastTopLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[node name="RayCastTopRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[node name="RayCastBottomLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[node name="RayCastBottomRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

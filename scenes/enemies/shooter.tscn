@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://bsylvt1vl3inm"]
+
+[ext_resource type="Script" uid="uid://bee03w7njksdo" path="res://scripts/game/enemy/shooter.gd" id="1_1uapl"]
+[ext_resource type="Texture2D" uid="uid://b60cn6siu34l7" path="res://assets/textures/enemies/shooter.png" id="2_onxcn"]
+[ext_resource type="PackedScene" uid="uid://b4kcops3qy22j" path="res://scenes/ui/health_bar.tscn" id="3_yif4x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lynhg"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok5ye"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld1l8"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxh7r"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts0hh"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qut8p"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4fik"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32q6q"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mxsl"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgnek"]
+atlas = ExtResource("2_onxcn")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lynhg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok5ye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld1l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxh7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts0hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qut8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4fik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32q6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mxsl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgnek")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(16, 16)
+
+[node name="shooter" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_1uapl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qhqgy")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_yif4x")]
+offset_top = -14.0
+offset_bottom = -14.0
+
+[node name="RayCastTopLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(-9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[node name="RayCastTopRight" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[node name="RayCastBottomLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[node name="RayCastBottomRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(9, 0)
+collision_mask = 37
+collide_with_areas = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

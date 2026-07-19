@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c4nmroyj01h47"]
+
+[ext_resource type="Texture2D" uid="uid://b3dedgbbfy282" path="res://assets/textures/ui/shop/menu_weapon.png" id="1_b5jim"]
+[ext_resource type="PackedScene" uid="uid://n72t4tjrvxlt" path="res://scenes/shop/upgrade_container.tscn" id="2_2b4hc"]
+
+[node name="Weapons" type="Control" unique_id=1181897040]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1849372410]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_b5jim")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="SwordUpgrade" parent="." unique_id=267737913 instance=ExtResource("2_2b4hc")]
+layout_mode = 0
+
+[node name="GunUpgrade" parent="." unique_id=1603034130 instance=ExtResource("2_2b4hc")]
+layout_mode = 0

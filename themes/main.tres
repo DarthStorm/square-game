@@ -1,0 +1,62 @@
+[gd_resource type="Theme" format=3 uid="uid://o4k7cbp4wtsm"]
+
+[ext_resource type="FontFile" uid="uid://mcf2wp6t5nlf" path="res://fonts/PixelOperator8.ttf" id="1_s8pfl"]
+[ext_resource type="Texture2D" uid="uid://dfclrlatnfgmt" path="res://assets/textures/ui/button_disabled.png" id="2_q8uvm"]
+[ext_resource type="Texture2D" uid="uid://c3kxtcobhcurs" path="res://assets/textures/ui/button.png" id="2_xnr13"]
+[ext_resource type="Texture2D" uid="uid://bgyj2r342r4c4" path="res://assets/textures/ui/button_hover.png" id="3_q8uvm"]
+[ext_resource type="Texture2D" uid="uid://dnifylbo34jus" path="res://assets/textures/ui/button_focus.png" id="3_spg3m"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2m8ap"]
+texture = ExtResource("2_q8uvm")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6enhr"]
+texture = ExtResource("3_spg3m")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3lqt3"]
+texture = ExtResource("3_q8uvm")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8pfl"]
+atlas = ExtResource("2_xnr13")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dpjbf"]
+texture = SubResource("AtlasTexture_s8pfl")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_25yo6"]
+
+[resource]
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_s8pfl")
+Button/styles/disabled = SubResource("StyleBoxTexture_2m8ap")
+Button/styles/focus = SubResource("StyleBoxTexture_6enhr")
+Button/styles/hover = SubResource("StyleBoxTexture_3lqt3")
+Button/styles/hover_pressed_mirrored = null
+Button/styles/normal = SubResource("StyleBoxTexture_dpjbf")
+Button/styles/normal_mirrored = null
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_s8pfl")
+Label/styles/normal = SubResource("StyleBoxEmpty_25yo6")

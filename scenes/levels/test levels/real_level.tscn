@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=4 uid="uid://ck3dpstmt8bed"]
+
+[ext_resource type="TileSet" uid="uid://b5ncxc40h7twq" path="res://assets/tilesets/collision.tres" id="1_jwb57"]
+[ext_resource type="PackedScene" uid="uid://bimc6rrd7jev2" path="res://scenes/player/player.tscn" id="2_uohm3"]
+[ext_resource type="AudioStream" uid="uid://c81bs4uxi28ks" path="res://assets/audio/peakmusic.ogg" id="3_jwb57"]
+[ext_resource type="Theme" uid="uid://73hw45bcq2rc" path="res://themes/pixeloperator.tres" id="4_sbjci"]
+[ext_resource type="PackedScene" uid="uid://bta3dct5gg3qp" path="res://scenes/killzone.tscn" id="5_7m8dm"]
+[ext_resource type="PackedScene" uid="uid://bsylvt1vl3inm" path="res://scenes/enemies/shooter.tscn" id="6_jwb57"]
+[ext_resource type="PackedScene" uid="uid://iulxd3jlvfkm" path="res://scenes/enemies/enemy.tscn" id="7_i5wwg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jwb57"]
+distance = -236.0
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMaps" type="Node" parent="."]
+
+[node name="Collision" type="TileMapLayer" parent="TileMaps"]
+tile_map_data = PackedByteArray("AAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAADAAEAAQAAAAAAAAD9/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wAAAQABAAAAAAD6////AQABAAAAAAD6//7/AQABAAAAAAD6//3/AQABAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAAAAAD5////AQAAAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD5//z/AQAAAAAAAAD6//z/AQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAANAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAFAPz/AQAAAAAAAAAGAPz/AQAAAAAAAAAHAPz/AQAAAAAAAAAIAPz/AQAAAAAAAAAFAP3/AQABAAAAAAAFAP7/AQABAAAAAAAFAP//AQABAAAAAAAIAP3/AQABAAAAAAAIAP7/AQABAAAAAAAIAP//AQABAAAAAAAGAP//AQADAAAAAAAHAP//AQADAAAAAAAGAP3/AQADAAAAAAAGAP7/AQADAAAAAAAHAP7/AQADAAAAAAAHAP3/AQADAAAAAAAQAAEAAQAAAAAAAAARAAEAAQAAAAAAAAASAAEAAQAAAAAAAAATAAEAAQAAAAAAAAAUAAEAAQAAAAAAAAAVAAEAAQAAAAAAAAAWAAEAAQAAAAAAAAAXAAEAAQAAAAAAAAAYAAEAAQAAAAAAAAAZAAEAAQAAAAAAAAAaAAAAAQAAAAAAAAAaAAEAAQAAAAAAAAAaAPz/AQAAAAAAAAAaAP3/AQAAAAAAAAAaAP7/AQAAAAAAAAAaAP//AQAAAAAAAAAFAAAAAQABAAAAAAAIAAAAAQABAAAAAAAGAAAAAQADAAAAAAAHAAAAAQADAAAAAAADAAAAAQACAAUAAAAEAAAAAQAAAAQAAAACAAEAAQAAAAAAAAAQAPz/AQABAAUAAAARAPz/AQABAAUAAAASAPz/AQABAAUAAAATAPz/AQABAAUAAAAUAPz/AQABAAUAAAAZAAAAAQADAAAAAAAYAAAAAQADAAAAAAAZAP//AQADAAAAAAA=")
+tile_set = ExtResource("1_jwb57")
+
+[node name="shooter" parent="TileMaps" instance=ExtResource("6_jwb57")]
+position = Vector2(295, -78)
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_uohm3")]
+z_index = 20
+position = Vector2(10, -4)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jwb57")
+autoplay = true
+parameters/looping = true
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="HealthDisplay" type="Label" parent="."]
+offset_left = -68.0
+offset_top = -40.0
+offset_right = 23.0
+offset_bottom = -28.0
+theme = ExtResource("4_sbjci")
+text = "We meet again."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Killzone" parent="." instance=ExtResource("5_7m8dm")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_jwb57")
+
+[node name="enemy" parent="." instance=ExtResource("7_i5wwg")]
+position = Vector2(115, -75)
+
+[node name="enemy2" parent="." instance=ExtResource("7_i5wwg")]
+position = Vector2(172, -4)
+
+[node name="enemy3" parent="." instance=ExtResource("7_i5wwg")]
+position = Vector2(276, -5)
+
+[node name="enemy4" parent="." instance=ExtResource("7_i5wwg")]
+position = Vector2(365, -5)
+
+[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

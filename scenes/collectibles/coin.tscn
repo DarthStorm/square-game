@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cyvm54plv7q4m"]
+
+[ext_resource type="Script" uid="uid://byfl1l1f7eulw" path="res://scripts/coin.gd" id="1_ais5i"]
+[ext_resource type="Texture2D" uid="uid://3iudypb6p7vp" path="res://assets/textures/collectibles/coin.png" id="1_qygne"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ais5i"]
+radius = 4.1231055
+
+[node name="Coin" type="Area2D" unique_id=35850974]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ais5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=245919372]
+texture = ExtResource("1_qygne")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1489132997]
+shape = SubResource("CircleShape2D_ais5i")
+
+[node name="EnemyTimer" type="Timer" parent="." unique_id=420369405]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

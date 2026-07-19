@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://ca6sxrjvebv1q"]
+
+[ext_resource type="Theme" uid="uid://73hw45bcq2rc" path="res://themes/pixeloperator.tres" id="1_5en4g"]
+[ext_resource type="Texture2D" uid="uid://73tyi46bakkj" path="res://assets/textures/ui/lifebar_empty.png" id="1_ro3t7"]
+[ext_resource type="Texture2D" uid="uid://b0iiimqjo2qxm" path="res://assets/textures/ui/lifebar.png" id="2_5en4g"]
+[ext_resource type="Script" uid="uid://c27ymytc22f24" path="res://scripts/ui/health_bar.gd" id="4_ua6yw"]
+[ext_resource type="Texture2D" uid="uid://b3eh83vmlt7li" path="res://assets/textures/ui/pause.png" id="5_75u2n"]
+[ext_resource type="Texture2D" uid="uid://b6ehhqbb5s6lh" path="res://assets/textures/ui/exit.png" id="5_w7enk"]
+[ext_resource type="Script" uid="uid://bc10tsbjdn2d" path="res://scripts/exit.gd" id="6_ukj8e"]
+[ext_resource type="Script" uid="uid://dcly5uq8td7np" path="res://scripts/pause.gd" id="6_xpksx"]
+[ext_resource type="Texture2D" uid="uid://bwr1k5p85im4c" path="res://assets/textures/ui/play.png" id="7_24e4x"]
+[ext_resource type="Script" uid="uid://ddyxms5fjcwae" path="res://scripts/play.gd" id="8_24e4x"]
+[ext_resource type="PackedScene" uid="uid://bll37h1vygnpd" path="res://scenes/ui/coin_display.tscn" id="11_htlhs"]
+
+[node name="UI" type="CanvasLayer" unique_id=470350275]
+
+[node name="HUD" type="Control" parent="." unique_id=820814097]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
+
+[node name="HealthBar" type="Control" parent="HUD" unique_id=178157072 groups=["healthbar"]]
+anchors_preset = 0
+offset_right = 22.0
+offset_bottom = 8.0
+script = ExtResource("4_ua6yw")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="HUD/HealthBar" unique_id=1535518055]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 17.0
+scale = Vector2(2, 2)
+theme = ExtResource("1_5en4g")
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("1_ro3t7")
+texture_progress = ExtResource("2_5en4g")
+
+[node name="HealthDisplay" type="Label" parent="HUD/HealthBar/ProgressBar" unique_id=666666385]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -6.0
+offset_right = 26.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinDisplay" parent="HUD" unique_id=1400965315 groups=["coindisplay"] instance=ExtResource("11_htlhs")]
+layout_mode = 1
+offset_top = 42.0
+offset_right = -40.0
+offset_bottom = 2.0
+
+[node name="GameControls" type="Control" parent="." unique_id=549836800]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_bottom = 103.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="GameControls" unique_id=1490197286]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -255.0
+offset_right = -191.0
+offset_bottom = 40.0
+grow_horizontal = 0
+scale = Vector2(3.9806833, 3.9473853)
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameControls/MarginContainer" unique_id=403023473]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Exit" type="TextureButton" parent="GameControls/MarginContainer/HBoxContainer" unique_id=205825288]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("5_w7enk")
+script = ExtResource("6_ukj8e")
+
+[node name="Pause" type="TextureButton" parent="GameControls/MarginContainer/HBoxContainer" unique_id=1519866000]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("5_75u2n")
+script = ExtResource("6_xpksx")
+
+[node name="Play" type="TextureButton" parent="GameControls/MarginContainer/HBoxContainer" unique_id=1408050549]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("7_24e4x")
+script = ExtResource("8_24e4x")
+
+[connection signal="pressed" from="GameControls/MarginContainer/HBoxContainer/Exit" to="GameControls/MarginContainer/HBoxContainer/Exit" method="_on_pressed"]
+[connection signal="ready" from="GameControls/MarginContainer/HBoxContainer/Exit" to="GameControls/MarginContainer/HBoxContainer/Exit" method="_on_ready"]
+[connection signal="pressed" from="GameControls/MarginContainer/HBoxContainer/Pause" to="GameControls/MarginContainer/HBoxContainer/Pause" method="_on_pressed"]
+[connection signal="ready" from="GameControls/MarginContainer/HBoxContainer/Pause" to="GameControls/MarginContainer/HBoxContainer/Pause" method="_on_ready"]
+[connection signal="pressed" from="GameControls/MarginContainer/HBoxContainer/Play" to="GameControls/MarginContainer/HBoxContainer/Play" method="_on_pressed"]
+[connection signal="ready" from="GameControls/MarginContainer/HBoxContainer/Play" to="GameControls/MarginContainer/HBoxContainer/Play" method="_on_ready"]

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b4kcops3qy22j"]
+
+[ext_resource type="Script" uid="uid://c27ymytc22f24" path="res://scripts/ui/health_bar.gd" id="1_1bvlm"]
+[ext_resource type="Theme" uid="uid://73hw45bcq2rc" path="res://themes/pixeloperator.tres" id="2_tujlf"]
+[ext_resource type="Texture2D" uid="uid://73tyi46bakkj" path="res://assets/textures/ui/lifebar_empty.png" id="3_tujlf"]
+[ext_resource type="Texture2D" uid="uid://b0iiimqjo2qxm" path="res://assets/textures/ui/lifebar.png" id="4_5oo0i"]
+
+[node name="HealthBar" type="Control" unique_id=94206319]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1bvlm")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=73654554]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -3.0
+offset_right = 39.0
+offset_bottom = 9.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("2_tujlf")
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_under = ExtResource("3_tujlf")
+texture_progress = ExtResource("4_5oo0i")
+
+[node name="HealthDisplay" type="Label" parent="ProgressBar" unique_id=189453548]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 12.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

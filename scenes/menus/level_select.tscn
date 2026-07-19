@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=4 uid="uid://c0fw1idfjxojx"]
+
+[ext_resource type="TileSet" uid="uid://b5ncxc40h7twq" path="res://assets/tilesets/collision.tres" id="1_1g16o"]
+[ext_resource type="Theme" uid="uid://o4k7cbp4wtsm" path="res://themes/main.tres" id="4_25yo6"]
+[ext_resource type="Script" uid="uid://brprum4glcall" path="res://scripts/ui/level_select.gd" id="4_vgm8m"]
+
+[node name="LevelSelect" type="Node2D"]
+
+[node name="TileMaps" type="Node" parent="."]
+
+[node name="Collision" type="TileMapLayer" parent="TileMaps"]
+tile_map_data = PackedByteArray("AAD3/wMAAQABAAEAAAD4/wMAAQABAAEAAAD5/wMAAQABAAEAAAD6/wMAAQABAAEAAAD7/wMAAQABAAEAAAD8/wMAAQABAAEAAAD9/wMAAQABAAEAAAD+/wMAAQABAAEAAAD//wMAAQABAAEAAAAAAAMAAQABAAEAAAABAAMAAQABAAEAAAACAAMAAQABAAEAAAADAAMAAQABAAEAAAAEAAMAAQABAAEAAAAFAAMAAQABAAEAAAAGAAMAAQABAAEAAAAHAAMAAQABAAEAAAAIAAMAAQABAAEAAAD3/wQAAQABAAIAAAD4/wQAAQABAAIAAAD5/wQAAQABAAIAAAD6/wQAAQABAAIAAAD7/wQAAQABAAIAAAD8/wQAAQABAAIAAAD9/wQAAQABAAIAAAD+/wQAAQABAAIAAAD//wQAAQABAAIAAAAAAAQAAQABAAIAAAABAAQAAQABAAIAAAACAAQAAQABAAIAAAADAAQAAQABAAIAAAAEAAQAAQABAAIAAAAFAAQAAQABAAIAAAAGAAQAAQABAAIAAAAHAAQAAQABAAIAAAAIAAQAAQABAAIAAAD2/wMAAQABAAEAAAD1/wMAAQABAAEAAAD0/wMAAQABAAEAAADz/wMAAQABAAEAAADy/wMAAQABAAEAAADx/wMAAQABAAEAAADw/wMAAQABAAEAAADv/wMAAQABAAEAAAD2/wQAAQABAAIAAAD1/wQAAQABAAIAAAD0/wQAAQABAAIAAADz/wQAAQABAAIAAADy/wQAAQABAAIAAADx/wQAAQABAAIAAADw/wQAAQABAAIAAADv/wQAAQABAAIAAAAJAAMAAQABAAEAAAAJAAQAAQABAAIAAAAKAAMAAQABAAEAAAAKAAQAAQABAAIAAAALAAMAAQABAAEAAAALAAQAAQABAAIAAAAMAAMAAQABAAEAAAAMAAQAAQABAAIAAAANAAMAAQABAAEAAAANAAQAAQABAAIAAAAOAAMAAQABAAEAAAAOAAQAAQABAAIAAAAPAAMAAQABAAEAAAAPAAQAAQABAAIAAAAQAAMAAQABAAEAAAAQAAQAAQABAAIAAADv/wUAAQABAAIAAADw/wUAAQABAAIAAADx/wUAAQABAAIAAADy/wUAAQABAAIAAADz/wUAAQABAAIAAAD0/wUAAQABAAIAAAD1/wUAAQABAAIAAAD2/wUAAQABAAIAAAD3/wUAAQABAAIAAAD4/wUAAQABAAIAAAD5/wUAAQABAAIAAAD6/wUAAQABAAIAAAD7/wUAAQABAAIAAAD8/wUAAQABAAIAAAD9/wUAAQABAAIAAAD+/wUAAQABAAIAAAD//wUAAQABAAIAAAAAAAUAAQABAAIAAAABAAUAAQABAAIAAAACAAUAAQABAAIAAAADAAUAAQABAAIAAAAEAAUAAQABAAIAAAAFAAUAAQABAAIAAAAGAAUAAQABAAIAAAAHAAUAAQABAAIAAAAIAAUAAQABAAIAAAAJAAUAAQABAAIAAAAKAAUAAQABAAIAAAALAAUAAQABAAIAAAAMAAUAAQABAAIAAAANAAUAAQABAAIAAAAOAAUAAQABAAIAAAAPAAUAAQABAAIAAAAQAAUAAQABAAIAAADv/wYAAQABAAIAAADw/wYAAQABAAIAAADx/wYAAQABAAIAAADy/wYAAQABAAIAAADz/wYAAQABAAIAAAD0/wYAAQABAAIAAAD1/wYAAQABAAIAAAD2/wYAAQABAAIAAAD3/wYAAQABAAIAAAD4/wYAAQABAAIAAAD5/wYAAQABAAIAAAD6/wYAAQABAAIAAAD7/wYAAQABAAIAAAD8/wYAAQABAAIAAAD9/wYAAQABAAIAAAD+/wYAAQABAAIAAAD//wYAAQABAAIAAAAAAAYAAQABAAIAAAABAAYAAQABAAIAAAACAAYAAQABAAIAAAADAAYAAQABAAIAAAAEAAYAAQABAAIAAAAFAAYAAQABAAIAAAAGAAYAAQABAAIAAAAHAAYAAQABAAIAAAAIAAYAAQABAAIAAAAJAAYAAQABAAIAAAAKAAYAAQABAAIAAAALAAYAAQABAAIAAAAMAAYAAQABAAIAAAANAAYAAQABAAIAAAAOAAYAAQABAAIAAAAPAAYAAQABAAIAAAAQAAYAAQABAAIAAADv/wcAAQABAAIAAADw/wcAAQABAAIAAADx/wcAAQABAAIAAADy/wcAAQABAAIAAADz/wcAAQABAAIAAAD0/wcAAQABAAIAAAD1/wcAAQABAAIAAAD2/wcAAQABAAIAAAD3/wcAAQABAAIAAAD4/wcAAQABAAIAAAD5/wcAAQABAAIAAAD6/wcAAQABAAIAAAD7/wcAAQABAAIAAAD8/wcAAQABAAIAAAD9/wcAAQABAAIAAAD+/wcAAQABAAIAAAD//wcAAQABAAIAAAAAAAcAAQABAAIAAAABAAcAAQABAAIAAAACAAcAAQABAAIAAAADAAcAAQABAAIAAAAEAAcAAQABAAIAAAAFAAcAAQABAAIAAAAGAAcAAQABAAIAAAAHAAcAAQABAAIAAAAIAAcAAQABAAIAAAAJAAcAAQABAAIAAAAKAAcAAQABAAIAAAALAAcAAQABAAIAAAAMAAcAAQABAAIAAAANAAcAAQABAAIAAAAOAAcAAQABAAIAAAAPAAcAAQABAAIAAAAQAAcAAQABAAIAAADv/wgAAQABAAIAAADw/wgAAQABAAIAAADx/wgAAQABAAIAAADy/wgAAQABAAIAAADz/wgAAQABAAIAAAD0/wgAAQABAAIAAAD1/wgAAQABAAIAAAD2/wgAAQABAAIAAAD3/wgAAQABAAIAAAD4/wgAAQABAAIAAAD5/wgAAQABAAIAAAD6/wgAAQABAAIAAAD7/wgAAQABAAIAAAD8/wgAAQABAAIAAAD9/wgAAQABAAIAAAD+/wgAAQABAAIAAAD//wgAAQABAAIAAAAAAAgAAQABAAIAAAABAAgAAQABAAIAAAACAAgAAQABAAIAAAADAAgAAQABAAIAAAAEAAgAAQABAAIAAAAFAAgAAQABAAIAAAAGAAgAAQABAAIAAAAHAAgAAQABAAIAAAAIAAgAAQABAAIAAAAJAAgAAQABAAIAAAAKAAgAAQABAAIAAAALAAgAAQABAAIAAAAMAAgAAQABAAIAAAANAAgAAQABAAIAAAAOAAgAAQABAAIAAAAPAAgAAQABAAIAAAAQAAgAAQABAAIAAAA=")
+tile_set = ExtResource("1_1g16o")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="MainMenuUI" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="MainMenuUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -144.0
+offset_top = -81.0
+offset_right = 144.0
+offset_bottom = 81.0
+
+[node name="Title" type="Label" parent="MainMenuUI/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_right = 144.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme = ExtResource("4_25yo6")
+theme_override_font_sizes/font_size = 16
+text = "Level Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI"]
+offset_left = -87.0
+offset_top = -33.0
+offset_right = 87.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Level1" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "1"
+script = ExtResource("4_vgm8m")
+level = 1
+
+[node name="Level2" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "2"
+script = ExtResource("4_vgm8m")
+level = 2
+
+[node name="Level3" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "3"
+script = ExtResource("4_vgm8m")
+level = 3
+
+[node name="Level4" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "4"
+script = ExtResource("4_vgm8m")
+level = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenuUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Level5" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "5"
+script = ExtResource("4_vgm8m")
+level = 5
+
+[node name="Level6" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "6"
+script = ExtResource("4_vgm8m")
+level = 6
+
+[node name="Level7" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "7"
+script = ExtResource("4_vgm8m")
+level = 7
+
+[node name="Level8" type="Button" parent="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme = ExtResource("4_25yo6")
+text = "8"
+script = ExtResource("4_vgm8m")
+level = 8
+
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level1" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level1" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level2" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level2" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level3" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level3" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level4" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer/Level4" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level5" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level5" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level6" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level6" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level7" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level7" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level8" to="MainMenuUI/MarginContainer/VBoxContainer/HBoxContainer2/Level8" method="_on_pressed"]

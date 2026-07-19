@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c14mc5unefke5"]
+
+[ext_resource type="Script" uid="uid://d25esr74n6hwy" path="res://scripts/game/playerbullet.gd" id="1_g3dr4"]
+[ext_resource type="Texture2D" uid="uid://cswg5rmiciif2" path="res://assets/textures/player/skills/playerbullet.png" id="2_g3dr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
+size = Vector2(8, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5glv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g3dr4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_g3dr4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_y25gk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l5glv")
+autoplay = "default"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

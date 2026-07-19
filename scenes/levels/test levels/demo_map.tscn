@@ -1,0 +1,326 @@
+[gd_scene load_steps=7 format=4 uid="uid://1gxyjuo6xxt8"]
+
+[ext_resource type="PackedScene" uid="uid://bimc6rrd7jev2" path="res://scenes/player/player.tscn" id="1_uyi5c"]
+[ext_resource type="AudioStream" uid="uid://ci6pd1k53q6jy" path="res://assets/audio/-Stalker-.mp3" id="2_pmp45"]
+[ext_resource type="TileSet" uid="uid://b5ncxc40h7twq" path="res://assets/tilesets/collision.tres" id="3_xyfoi"]
+[ext_resource type="PackedScene" uid="uid://bsylvt1vl3inm" path="res://scenes/enemies/shooter.tscn" id="4_5bj6h"]
+[ext_resource type="PackedScene" uid="uid://smo32f6f122n" path="res://scenes/enemies/enemycontrollers/enemy_jump.tscn" id="4_cbdkf"]
+[ext_resource type="PackedScene" uid="uid://dsw6qs3bes6fs" path="res://scenes/enemies/enemycontrollers/enemy_spawner.tscn" id="6_mqkns"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_uyi5c")]
+z_index = 20
+position = Vector2(-932, -143)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pmp45")
+autoplay = true
+
+[node name="TileMaps" type="Node" parent="."]
+
+[node name="Collision" type="TileMapLayer" parent="TileMaps"]
+tile_map_data = PackedByteArray("AAD2/wEAAQAAAAAAAAD3/wEAAQAAAAAAAAD4/wEAAQAAAAAAAAD5/wEAAQAAAAAAAAD6/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAADi/wEAAQAAAAAAAADj/wEAAQAAAAAAAADk/wEAAQAAAAAAAADl/wEAAQAAAAAAAADm/wEAAQAAAAAAAADn/wEAAQAAAAAAAADo/wEAAQAAAAAAAADp/wEAAQAAAAAAAADq/wEAAQAAAAAAAADr/wEAAQAAAAAAAADs/wEAAQAAAAAAAADt/wEAAQAAAAAAAADu/wEAAQAAAAAAAADv/wEAAQAAAAAAAADw/wEAAQAAAAAAAADx/wEAAQAAAAAAAADy/wEAAQAAAAAAAADz/wEAAQAAAAAAAAD0/wEAAQAAAAAAAAD1/wEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAANAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAQAAEAAQAAAAAAAAARAAEAAQAAAAAAAAASAAEAAQAAAAAAAAATAAEAAQAAAAAAAAAUAAEAAQAAAAAAAAAVAAEAAQAAAAAAAAAWAAEAAQAAAAAAAAAXAAEAAQAAAAAAAAAYAAEAAQAAAAAAAAAZAAEAAQAAAAAAAAAaAAEAAQAAAAAAAAAbAAEAAQAAAAAAAAAcAAEAAQAAAAAAAAAdAAEAAQAAAAAAAAAeAAEAAQAAAAAAAADh/wEAAQAAAAAAAADg/wEAAQAAAAAAAADf/wEAAQAAAAAAAADe/wEAAQAAAAAAAADd/wEAAQAAAAAAAADc/wEAAQAAAAAAAADb/wEAAQAAAAAAAADa/wEAAQAAAAAAAADZ/wEAAQAAAAAAAADY/wEAAQAAAAAAAADX/wEAAQAAAAAAAADW/wEAAQAAAAAAAADV/wEAAQAAAAAAAADU/wEAAQAAAAAAAADT/wEAAQAAAAAAAADS/wEAAQAAAAAAAADR/wEAAQAAAAAAAADQ/wEAAQAAAAAAAADP/wEAAQAAAAAAAADO/wEAAQAAAAAAAADN/wEAAQAAAAAAAADM/wEAAQAAAAAAAADL/wEAAQAAAAAAAADK/wEAAQAAAAAAAADJ/wEAAQAAAAAAAADI/wEAAQAAAAAAAADH/wEAAQAAAAAAAADG/wEAAQAAAAAAAADF/wEAAQAAAAAAAADE/wEAAQAAAAAAAAAfAAEAAQAAAAAAAAAgAAEAAQAAAAAAAAAhAAEAAQAAAAAAAAAiAAEAAQAAAAAAAAAjAAEAAQAAAAAAAAAkAAEAAQAAAAAAAAAlAAEAAQAAAAAAAAAmAAEAAQAAAAAAAAAnAAEAAQAAAAAAAAAoAAEAAQAAAAAAAAApAAEAAQAAAAAAAAAqAAEAAQAAAAAAAAArAAEAAQAAAAAAAAAsAAEAAQAAAAAAAAAtAAEAAQAAAAAAAAAuAAEAAQAAAAAAAAAvAAEAAQAAAAAAAAAwAAEAAQAAAAAAAAAxAAEAAQAAAAAAAAAyAAEAAQAAAAAAAAAzAAEAAQAAAAAAAAA0AAEAAQAAAAAAAAA1AAEAAQAAAAAAAAA2AAEAAQAAAAAAAAA3AAEAAQAAAAAAAAA4AAEAAQAAAAAAAAA5AAEAAQAAAAAAAAA6AAEAAQAAAAAAAAA7AAEAAQAAAAAAAAA8AAEAAQAAAAAAAAA9AAEAAQAAAAAAAAA9AAAAAQAAAAAAAAA9AP//AQAAAAAAAAA9AP7/AQAAAAAAAAA9AP3/AQAAAAAAAAA9APz/AQAAAAAAAAA9APv/AQAAAAAAAAA9APr/AQAAAAAAAAA9APn/AQAAAAAAAAA9APj/AQAAAAAAAAA9APf/AQAAAAAAAAA9APb/AQAAAAAAAAA9APX/AQAAAAAAAAA9APT/AQAAAAAAAAA9APP/AQAAAAAAAAA9APL/AQAAAAAAAAA9APH/AQAAAAAAAAA9APD/AQAAAAAAAAA9AO//AQAAAAAAAAA9AO7/AQAAAAAAAAA9AO3/AQAAAAAAAAA9AOz/AQAAAAAAAAA9AOv/AQAAAAAAAAA9AOr/AQAAAAAAAAA9AOn/AQAAAAAAAAA9AOj/AQAAAAAAAAA9AOf/AQAAAAAAAAA9AOb/AQAAAAAAAAA9AOX/AQAAAAAAAAA9AOT/AQAAAAAAAAA9AOP/AQAAAAAAAAA9AOL/AQAAAAAAAAA9AOH/AQAAAAAAAAA9AOD/AQAAAAAAAAA9AN//AQAAAAAAAAA9AN7/AQAAAAAAAAA9AN3/AQAAAAAAAAA9ANz/AQAAAAAAAAA9ANv/AQAAAAAAAAA9ANr/AQAAAAAAAAA9ANn/AQAAAAAAAAA9ANj/AQAAAAAAAADD/wEAAQAAAAAAAADD/wAAAQAAAAAAAADD////AQAAAAAAAADD//7/AQAAAAAAAADD//3/AQAAAAAAAADD//z/AQAAAAAAAADD//v/AQAAAAAAAADD//r/AQAAAAAAAADD//n/AQAAAAAAAADD//j/AQAAAAAAAADD//f/AQAAAAAAAADD//b/AQAAAAAAAADD//X/AQAAAAAAAADD//T/AQAAAAAAAADD//P/AQAAAAAAAADD//L/AQAAAAAAAADD//H/AQAAAAAAAADD//D/AQAAAAAAAADD/+//AQAAAAAAAADD/+7/AQAAAAAAAADD/+3/AQAAAAAAAADD/+z/AQAAAAAAAADD/+v/AQAAAAAAAADD/+r/AQAAAAAAAADD/+n/AQAAAAAAAADD/+j/AQAAAAAAAADD/+f/AQAAAAAAAADD/+b/AQAAAAAAAADD/+X/AQAAAAAAAADD/+T/AQAAAAAAAADD/+P/AQAAAAAAAADD/+L/AQAAAAAAAADD/+H/AQAAAAAAAADD/+D/AQAAAAAAAADD/9//AQAAAAAAAADD/97/AQAAAAAAAADD/93/AQAAAAAAAADD/9z/AQAAAAAAAADD/9v/AQAAAAAAAADD/9r/AQAAAAAAAADD/9n/AQAAAAAAAADD/9j/AQAAAAAAAADE//n/AQAAAAAAAADF//n/AQAAAAAAAADG//n/AQAAAAAAAADH//n/AQAAAAAAAADI//n/AQAAAAAAAADI//j/AQAAAAAAAADJ//j/AQAAAAAAAADJ//f/AQAAAAAAAADJ//n/AQAAAAAAAADJ//r/AQAAAAAAAADI//r/AQAAAAAAAADH//r/AQAAAAAAAADG//r/AQAAAAAAAADF//r/AQAAAAAAAADE//r/AQAAAAAAAADI//v/AQAAAAAAAADJ//v/AQAAAAAAAADJ//z/AQAAAAAAAADJ//3/AQAAAAAAAADK//3/AQAAAAAAAADK//z/AQAAAAAAAADL//z/AQAAAAAAAADK//v/AQAAAAAAAADL//3/AQAAAAAAAADL//7/AQAAAAAAAADM//7/AQAAAAAAAADM////AQAAAAAAAADN////AQAAAAAAAADL////AQAAAAAAAADN/wAAAQAAAAAAAADO/wAAAQAAAAAAAADO////AQAAAAAAAADP/wAAAQAAAAAAAADH//3/AQADAAAAAADH//z/AQADAAAAAADH//v/AQADAAAAAADG//v/AQADAAAAAADF//v/AQADAAAAAADE//v/AQADAAAAAADE//z/AQADAAAAAADE//3/AQADAAAAAADE//7/AQADAAAAAADE////AQADAAAAAADE/wAAAQADAAAAAADF/wAAAQADAAAAAADF////AQADAAAAAADF//7/AQADAAAAAADF//3/AQADAAAAAADF//z/AQADAAAAAADG//z/AQADAAAAAADG//3/AQADAAAAAADG//7/AQADAAAAAADG////AQADAAAAAADG/wAAAQADAAAAAADH/wAAAQADAAAAAADH////AQADAAAAAADH//7/AQADAAAAAADI//7/AQADAAAAAADI//3/AQADAAAAAADI//z/AQADAAAAAADI////AQADAAAAAADI/wAAAQADAAAAAADJ/wAAAQADAAAAAADJ////AQADAAAAAADJ//7/AQADAAAAAADK//7/AQADAAAAAADK////AQADAAAAAADK/wAAAQADAAAAAADL/wAAAQADAAAAAADM/wAAAQADAAAAAADE//j/AQAAAAAAAADF//j/AQABAAAAAADE//f/AQABAAAAAADP//j/AQABAAUAAADQ//j/AQABAAUAAADR//j/AQABAAUAAADS//f/AQABAAUAAADT//f/AQABAAUAAADX//n/AQABAAUAAADY//n/AQABAAUAAADZ//r/AQABAAUAAADa//r/AQABAAUAAADd//f/AQABAAUAAADe//f/AQABAAUAAADf//b/AQABAAUAAADg//b/AQABAAUAAADc//3/AQABAAUAAADd//3/AQABAAUAAADe//3/AQABAAUAAADg//v/AQABAAUAAADh//v/AQABAAUAAADl//n/AQABAAUAAADm//n/AQABAAUAAADn//n/AQABAAUAAADV/wAAAQAAAAAAAADW/wAAAQAAAAAAAADX/wAAAQAAAAAAAADY/wAAAQAAAAAAAADW////AQAAAAAAAADX////AQAAAAAAAADr//v/AQAAAAEAAADr//z/AQAAAAIAAADs//v/AQABAAEAAADs//z/AQABAAIAAADt//v/AQABAAEAAADt//z/AQABAAIAAADt//3/AQABAAIAAADt//7/AQABAAIAAADu//v/AQABAAEAAADu//z/AQABAAIAAADu//3/AQABAAIAAADu//7/AQABAAIAAADv//v/AQABAAEAAADv//z/AQABAAIAAADv//3/AQABAAIAAADv//7/AQABAAIAAADw//v/AQABAAEAAADw//z/AQABAAIAAADw//3/AQABAAIAAADw//7/AQABAAIAAADx//v/AQABAAEAAADx//z/AQABAAIAAADx//3/AQABAAIAAADx//7/AQABAAIAAADy//v/AQABAAEAAADy//z/AQABAAIAAADy//3/AQABAAIAAADy//7/AQABAAIAAADz//v/AQACAAEAAADz//z/AQACAAIAAADz//3/AQACAAIAAADz//7/AQACAAIAAADp//3/AQABAAEAAADp//7/AQABAAIAAADp////AQABAAIAAADp/wAAAQABAAIAAADq//3/AQABAAEAAADq//7/AQABAAIAAADq////AQABAAIAAADq/wAAAQABAAIAAADr//3/AQAAAAIAAADr//7/AQAAAAIAAADr////AQAAAAIAAADr/wAAAQAAAAIAAADs//3/AQABAAIAAADs//7/AQABAAIAAADs////AQABAAIAAADs/wAAAQABAAIAAADk//3/AQAAAAEAAADk//7/AQAAAAIAAADk////AQAAAAIAAADk/wAAAQAAAAIAAADl//3/AQABAAEAAADl//7/AQABAAIAAADl////AQABAAIAAADl/wAAAQABAAIAAADm//3/AQABAAEAAADm//7/AQABAAIAAADm////AQABAAIAAADm/wAAAQABAAIAAADn//3/AQABAAEAAADn//7/AQABAAIAAADn////AQABAAIAAADn/wAAAQABAAIAAADo//3/AQABAAEAAADo//7/AQABAAIAAADo////AQABAAIAAADo/wAAAQABAAIAAADt////AQABAAIAAADu////AQABAAIAAADv////AQABAAIAAADw////AQABAAIAAADx////AQABAAIAAADy////AQABAAIAAADz////AQACAAIAAADt/wAAAQABAAIAAADu/wAAAQABAAIAAADv/wAAAQABAAIAAADw/wAAAQABAAIAAADx/wAAAQABAAIAAADy/wAAAQABAAIAAADz/wAAAQACAAIAAADv//r/AQAAAAQAAADw//r/AQAAAAQAAADx//r/AQAAAAQAAADx//n/AQAAAAQAAADx//j/AQAAAAQAAADw//n/AQAAAAQAAAD2//3/AQAAAAQAAAD3//3/AQAAAAQAAAD6//7/AQAAAAQAAAD7//7/AQAAAAQAAAD+////AQAAAAQAAAD/////AQAAAAQAAAD3////AQACAAQAAAD3/wAAAQACAAQAAAD3//7/AQACAAQAAAD7////AQACAAQAAAD7/wAAAQACAAQAAAD//wAAAQACAAQAAAD+/wAAAQABAAQAAAD6////AQABAAQAAAD6/wAAAQABAAQAAAD2//7/AQABAAQAAAD2////AQABAAQAAAD2/wAAAQABAAQAAAD5/wAAAQADAAAAAAD9/wAAAQADAAAAAAD4/wAAAQADAAAAAAD8/wAAAQADAAAAAAD1/wAAAQADAAAAAAD0/wAAAQADAAAAAAD0////AQADAAAAAAD0//7/AQADAAAAAAD1////AQADAAAAAAD1//7/AQADAAAAAAD4////AQADAAAAAAD5////AQADAAAAAAD8////AQADAAAAAAD9////AQADAAAAAAA6AO//AQAAAAAAAAA6APL/AQAAAAAAAAA6APX/AQAAAAAAAAA6APj/AQAAAAAAAAA6APn/AQAAAAAAAAA6APr/AQAAAAAAAAA6APv/AQAAAAAAAAA6AP7/AQAAAAAAAAA7AO//AQAAAAAAAAA7APL/AQAAAAAAAAA7APX/AQAAAAAAAAA7APj/AQAAAAAAAAA8AO//AQAAAAAAAAA8APL/AQAAAAAAAAA8APX/AQAAAAAAAAA8APj/AQAAAAAAAAA3AO//AQAAAAAAAAA3APH/AQAAAAAAAAA3APL/AQAAAAAAAAA3APX/AQAAAAAAAAA3APb/AQAAAAAAAAA3APf/AQAAAAAAAAA3APj/AQAAAAAAAAA3APv/AQAAAAAAAAA3AP7/AQAAAAAAAAA3AP//AQAAAAAAAAA3AAAAAQAAAAAAAAA4AO//AQAAAAAAAAA4APX/AQAAAAAAAAA4APv/AQAAAAAAAAA4AP7/AQAAAAAAAAA5AO//AQAAAAAAAAA5APX/AQAAAAAAAAA5APv/AQAAAAAAAAA5AP7/AQAAAAAAAAA0AO//AQAAAAAAAAA0APL/AQAAAAAAAAA0APb/AQAAAAAAAAA0APf/AQAAAAAAAAA0APv/AQAAAAAAAAA0AP7/AQAAAAAAAAA1AO//AQAAAAAAAAA1APL/AQAAAAAAAAA1APv/AQAAAAAAAAA1AP7/AQAAAAAAAAA2AO//AQAAAAAAAAA2APL/AQAAAAAAAAA2APv/AQAAAAAAAAA2AP7/AQAAAAAAAAAxAO//AQAAAAAAAAAxAPL/AQAAAAAAAAAxAPX/AQAAAAAAAAAxAPb/AQAAAAAAAAAxAPf/AQAAAAAAAAAxAPj/AQAAAAAAAAAxAPv/AQAAAAAAAAAxAP7/AQAAAAAAAAAyAO//AQAAAAAAAAAyAPL/AQAAAAAAAAAyAPj/AQAAAAAAAAAzAO//AQAAAAAAAAAzAPL/AQAAAAAAAAAzAPj/AQAAAAAAAAAuAO//AQAAAAAAAAAuAPD/AQAAAAAAAAAuAPH/AQAAAAAAAAAuAPL/AQAAAAAAAAAuAPX/AQAAAAAAAAAuAPb/AQAAAAAAAAAuAPf/AQAAAAAAAAAuAPj/AQAAAAAAAAAuAPn/AQAAAAAAAAAuAPr/AQAAAAAAAAAuAPv/AQAAAAAAAAAuAP7/AQAAAAAAAAAuAP//AQAAAAAAAAAuAAAAAQAAAAAAAAAvAPv/AQAAAAAAAAAvAP7/AQAAAAAAAAAwAPv/AQAAAAAAAAAwAP7/AQAAAAAAAAArAO//AQAAAAAAAAArAPD/AQAAAAAAAAArAPH/AQAAAAAAAAArAPL/AQAAAAAAAAArAPX/AQAAAAAAAAArAPj/AQAAAAAAAAArAPv/AQAAAAAAAAArAP7/AQAAAAAAAAArAP//AQAAAAAAAAArAAAAAQAAAAAAAAAsAO//AQAAAAAAAAAsAPX/AQAAAAAAAAAsAPj/AQAAAAAAAAAsAPv/AQAAAAAAAAAtAO//AQAAAAAAAAAtAPX/AQAAAAAAAAAtAPj/AQAAAAAAAAAtAPv/AQAAAAAAAAAoAO//AQAAAAAAAAAoAPD/AQAAAAAAAAAoAPH/AQAAAAAAAAAoAPL/AQAAAAAAAAAoAPP/AQAAAAAAAAAoAPT/AQAAAAAAAAAoAPX/AQAAAAAAAAAoAPb/AQAAAAAAAAAoAPf/AQAAAAAAAAAoAPj/AQAAAAAAAAAoAPn/AQAAAAAAAAAoAPr/AQAAAAAAAAAoAPv/AQAAAAAAAAAoAPz/AQAAAAAAAAAoAP3/AQAAAAAAAAAoAP7/AQAAAAAAAAAoAP//AQAAAAAAAAAoAAAAAQAAAAAAAAApAPL/AQAAAAAAAAApAPv/AQAAAAAAAAAqAPL/AQAAAAAAAAAqAPv/AQAAAAAAAAA6AN3/AQAAAAAAAAA6AOD/AQAAAAAAAAA6AOH/AQAAAAAAAAA6AOL/AQAAAAAAAAA6AOP/AQAAAAAAAAA6AOb/AQAAAAAAAAA6AOf/AQAAAAAAAAA6AOj/AQAAAAAAAAA6AOn/AQAAAAAAAAA6AOz/AQAAAAAAAAA6AO3/AQAAAAAAAAA6AO7/AQAAAAAAAAA7AN3/AQAAAAAAAAA7AOb/AQAAAAAAAAA7AOz/AQAAAAAAAAA8AN3/AQAAAAAAAAA8AOb/AQAAAAAAAAA8AOz/AQAAAAAAAAA3AN3/AQAAAAAAAAA3AN7/AQAAAAAAAAA3AN//AQAAAAAAAAA3AOD/AQAAAAAAAAA3AOP/AQAAAAAAAAA3AOT/AQAAAAAAAAA3AOX/AQAAAAAAAAA3AOb/AQAAAAAAAAA3AOn/AQAAAAAAAAA3AOz/AQAAAAAAAAA3AO3/AQAAAAAAAAA3AO7/AQAAAAAAAAA4AN3/AQAAAAAAAAA4AOD/AQAAAAAAAAA4AOP/AQAAAAAAAAA5AN3/AQAAAAAAAAA5AOD/AQAAAAAAAAA5AOP/AQAAAAAAAAA0AN3/AQAAAAAAAAA0AOD/AQAAAAAAAAA0AOH/AQAAAAAAAAA0AOL/AQAAAAAAAAA0AOP/AQAAAAAAAAA0AOb/AQAAAAAAAAA0AOn/AQAAAAAAAAA0AOr/AQAAAAAAAAA0AOv/AQAAAAAAAAA0AOz/AQAAAAAAAAA1AN3/AQAAAAAAAAA1AOn/AQAAAAAAAAA1AOz/AQAAAAAAAAA2AN3/AQAAAAAAAAA2AOn/AQAAAAAAAAA2AOz/AQAAAAAAAAAxAN3/AQAAAAAAAAAxAN7/AQAAAAAAAAAxAN//AQAAAAAAAAAxAOD/AQAAAAAAAAAxAOP/AQAAAAAAAAAxAOT/AQAAAAAAAAAxAOX/AQAAAAAAAAAxAOb/AQAAAAAAAAAxAOn/AQAAAAAAAAAxAOz/AQAAAAAAAAAxAO3/AQAAAAAAAAAxAO7/AQAAAAAAAAAyAOD/AQAAAAAAAAAyAOP/AQAAAAAAAAAyAOb/AQAAAAAAAAAzAOD/AQAAAAAAAAAzAOP/AQAAAAAAAAAzAOb/AQAAAAAAAAAuAN3/AQAAAAAAAAAuAOD/AQAAAAAAAAAuAOP/AQAAAAAAAAAuAOT/AQAAAAAAAAAuAOX/AQAAAAAAAAAuAOb/AQAAAAAAAAAuAOn/AQAAAAAAAAAuAOz/AQAAAAAAAAAvAN3/AQAAAAAAAAAvAOD/AQAAAAAAAAAvAOb/AQAAAAAAAAAvAOn/AQAAAAAAAAAwAN3/AQAAAAAAAAAwAOD/AQAAAAAAAAAwAOb/AQAAAAAAAAAwAOn/AQAAAAAAAAArAN3/AQAAAAAAAAArAN7/AQAAAAAAAAArAN//AQAAAAAAAAArAOD/AQAAAAAAAAArAOP/AQAAAAAAAAArAOb/AQAAAAAAAAArAOf/AQAAAAAAAAArAOj/AQAAAAAAAAArAOn/AQAAAAAAAAArAOz/AQAAAAAAAAAsAN3/AQAAAAAAAAAsAOP/AQAAAAAAAAAsAOn/AQAAAAAAAAAtAN3/AQAAAAAAAAAtAOP/AQAAAAAAAAAtAOn/AQAAAAAAAAAoAN3/AQAAAAAAAAAoAN7/AQAAAAAAAAAoAN//AQAAAAAAAAAoAOD/AQAAAAAAAAAoAOH/AQAAAAAAAAAoAOL/AQAAAAAAAAAoAOP/AQAAAAAAAAAoAOT/AQAAAAAAAAAoAOX/AQAAAAAAAAAoAOb/AQAAAAAAAAAoAOf/AQAAAAAAAAAoAOj/AQAAAAAAAAAoAOn/AQAAAAAAAAAoAOr/AQAAAAAAAAAoAOv/AQAAAAAAAAAoAOz/AQAAAAAAAAAoAO3/AQAAAAAAAAAoAO7/AQAAAAAAAAApAN3/AQAAAAAAAAApAOP/AQAAAAAAAAApAOz/AQAAAAAAAAAqAN3/AQAAAAAAAAAqAOP/AQAAAAAAAAAqAOz/AQAAAAAAAAAuAOr/AQAAAAAAAAAuAOv/AQAAAAAAAAA3APD/AQAAAAAAAAA0APX/AQAAAAAAAAA0APj/AQAAAAAAAAACAPv/AQAAAAAAAAADAPv/AQAAAAAAAAAEAPv/AQAAAAAAAAAFAPv/AQAAAAAAAAAGAPv/AQAAAAAAAAAHAPv/AQAAAAAAAAAIAPv/AQAAAAAAAAANAPn/AQAAAAAAAAAOAPn/AQAAAAAAAAAOAPj/AQAAAAAAAAAMAPz/AQAAAAAAAAANAPz/AQAAAAAAAAAOAPz/AQAAAAAAAAAOAP3/AQAAAAAAAAAPAP3/AQAAAAAAAAAUAP3/AQAAAAAAAAAVAP3/AQAAAAAAAAAWAP3/AQAAAAAAAAAXAP3/AQAAAAAAAAAZAPf/AQAAAAAAAAAYAPf/AQAAAAAAAAAcAPX/AQAAAAAAAAAcAPT/AQAAAAAAAAAdAPT/AQAAAAAAAAAeAPT/AQAAAAAAAAAfAPT/AQAAAAAAAAAfAPX/AQAAAAAAAAAcAPr/AQAAAAAAAAAcAPv/AQAAAAAAAAAdAPz/AQAAAAAAAAAeAPz/AQAAAAAAAAAfAPz/AQAAAAAAAAAkAPb/AQAAAAAAAAAkAPf/AQAAAAAAAAAjAPf/AQAAAAAAAAAiAPr/AQABAAUAAAAjAPr/AQABAAUAAAAmAPn/AQABAAUAAAAlAPn/AQABAAUAAAAkAPn/AQABAAUAAAAkAPr/AQABAAUAAAAQAPL/AQABAAUAAAAJAPH/AQABAAUAAAAKAPH/AQABAAUAAAALAPH/AQABAAUAAAAMAPH/AQABAAUAAAANAPH/AQABAAUAAAAGAPH/AQAAAAAAAAAHAPH/AQABAAUAAAAIAPH/AQABAAUAAAAJAPT/AQABAAUAAAAKAPT/AQABAAUAAAALAPT/AQABAAUAAAAMAPT/AQABAAUAAAANAPT/AQABAAUAAAAOAPT/AQABAAUAAAAPAO3/AQABAAUAAAAQAO3/AQAAAAQAAAAQAO7/AQABAAUAAAARAO3/AQABAAUAAAAcAOf/AQAAAAAAAAAdAOf/AQAAAAAAAAAeAOf/AQAAAAAAAAAfAOf/AQAAAAAAAAAXAOX/AQAAAAAAAAAXAOb/AQAAAAAAAAAXAOf/AQAAAAAAAAAWAOf/AQAAAAAAAAAVAOf/AQAAAAAAAAAUAOT/AQAAAAAAAAATAOT/AQAAAAAAAAATAOX/AQAAAAAAAAATAOb/AQAAAAAAAAAZAOv/AQAAAAAAAAAaAOv/AQAAAAAAAAAUAO7/AQAAAAAAAAAVAO7/AQAAAAAAAAASAPT/AQAAAAAAAAATAPT/AQAAAAAAAAAUAPT/AQAAAAAAAAAVAPT/AQAAAAAAAAAWAPT/AQAAAAAAAAAXAPT/AQAAAAAAAAATAPj/AQAAAAAAAAAUAPj/AQAAAAAAAAAVAPj/AQAAAAAAAAAAAO3/AQAAAAAAAAAAAO7/AQAAAAAAAAAAAO//AQAAAAAAAAAAAPD/AQAAAAAAAAAAAPH/AQAAAAAAAAAAAPL/AQAAAAAAAAAAAPP/AQAAAAAAAAAAAPT/AQAAAAAAAAABAPT/AQAAAAAAAAACAPT/AQAAAAAAAAACAPP/AQAAAAAAAAACAPL/AQAAAAAAAAACAPH/AQAAAAAAAAACAPD/AQAAAAAAAAACAO//AQAAAAAAAAACAO7/AQAAAAAAAAADAO7/AQAAAAAAAAAEAO7/AQAAAAAAAAAEAO//AQAAAAAAAAAEAPD/AQAAAAAAAAAEAPH/AQAAAAAAAAAEAPL/AQAAAAAAAAAFAPL/AQAAAAAAAAAGAPL/AQAAAAAAAAA=")
+tile_set = ExtResource("3_xyfoi")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemyControllers" type="Node" parent="Enemies"]
+
+[node name="Jump" type="Node" parent="Enemies/EnemyControllers"]
+
+[node name="EnemyJump" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(102, -243)
+
+[node name="EnemyJump2" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(100, -258)
+
+[node name="EnemyJump3" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(93, -272)
+
+[node name="EnemyJump4" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(23, -203)
+
+[node name="EnemyJump5" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(24, -238)
+
+[node name="EnemyJump6" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(26, -276)
+
+[node name="EnemyJump7" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(36, -84)
+
+[node name="EnemyJump8" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(291, -199)
+
+[node name="EnemyJump9" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(345, -133)
+
+[node name="EnemyJump10" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(461, -206)
+
+[node name="EnemyJump11" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(331, -297)
+
+[node name="EnemyJump12" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(422, -343)
+
+[node name="EnemyJump13" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(373, -442)
+
+[node name="EnemyJump14" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(567, -151)
+
+[node name="EnemyJump15" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(551, -102)
+
+[node name="EnemyJump16" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(617, -121)
+
+[node name="EnemyJump17" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(375, -59)
+
+[node name="EnemyJump18" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(659, 12)
+
+[node name="EnemyJump19" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(731, 14)
+
+[node name="EnemyJump20" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(812, 11)
+
+[node name="EnemyJump21" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(956, 12)
+
+[node name="EnemyJump22" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(962, -12)
+
+[node name="EnemyJump23" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(955, -35)
+
+[node name="EnemyJump24" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(918, -84)
+
+[node name="EnemyJump25" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(788, -85)
+
+[node name="EnemyJump26" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(665, -88)
+
+[node name="EnemyJump27" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(680, -229)
+
+[node name="EnemyJump28" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(667, -327)
+
+[node name="EnemyJump29" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(669, -472)
+
+[node name="EnemyJump30" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(779, -422)
+
+[node name="EnemyJump31" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(920, -276)
+
+[node name="EnemyJump32" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(958, -278)
+
+[node name="EnemyJump33" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(972, -474)
+
+[node name="EnemyJump34" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(972, -450)
+
+[node name="EnemyJump35" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(973, -426)
+
+[node name="EnemyJump36" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(972, -498)
+
+[node name="EnemyJump37" parent="Enemies/EnemyControllers/Jump" instance=ExtResource("4_cbdkf")]
+position = Vector2(813, -276)
+
+[node name="Block" type="Node" parent="Enemies/EnemyControllers"]
+
+[node name="shooter" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(673, 0)
+
+[node name="shooter2" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(720, 2)
+
+[node name="shooter3" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(774, 1)
+
+[node name="shooter4" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(822, -2)
+
+[node name="shooter5" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(848, 1)
+
+[node name="shooter6" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(906, -6)
+
+[node name="shooter7" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(941, 7)
+
+[node name="shooter8" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(930, -42)
+
+[node name="shooter9" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(847, -39)
+
+[node name="shooter10" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(889, -47)
+
+[node name="shooter11" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(847, -104)
+
+[node name="shooter12" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(901, -101)
+
+[node name="shooter13" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(953, -149)
+
+[node name="shooter14" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(916, -190)
+
+[node name="shooter15" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(818, -147)
+
+[node name="shooter16" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(711, -138)
+
+[node name="shooter17" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(717, -86)
+
+[node name="shooter18" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(718, -237)
+
+[node name="shooter19" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(664, -262)
+
+[node name="shooter20" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(721, -341)
+
+[node name="shooter21" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(855, -245)
+
+[node name="shooter22" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(859, -289)
+
+[node name="shooter23" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(957, -289)
+
+[node name="shooter24" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(868, -336)
+
+[node name="shooter25" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(954, -383)
+
+[node name="shooter26" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(954, -383)
+
+[node name="shooter27" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(915, -295)
+
+[node name="shooter28" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(830, -431)
+
+[node name="shooter29" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(767, -439)
+
+[node name="shooter30" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(811, -480)
+
+[node name="shooter31" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(755, -531)
+
+[node name="shooter32" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(668, -523)
+
+[node name="shooter33" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(935, -527)
+
+[node name="shooter34" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(958, -432)
+
+[node name="shooter35" parent="Enemies" instance=ExtResource("4_5bj6h")]
+position = Vector2(900, -483)
+
+[node name="EnemySpawner" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(74, -113)
+
+[node name="EnemySpawner2" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(160, -109)
+
+[node name="EnemySpawner3" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(290, -91)
+
+[node name="EnemySpawner4" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(390, -91)
+
+[node name="EnemySpawner5" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(527, -97)
+
+[node name="EnemySpawner6" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(444, -137)
+
+[node name="EnemySpawner7" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(346, -146)
+
+[node name="EnemySpawner8" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(198, -154)
+
+[node name="EnemySpawner9" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(253, -145)
+
+[node name="EnemySpawner10" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(110, -147)
+
+[node name="EnemySpawner11" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(159, -211)
+
+[node name="EnemySpawner12" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(213, -214)
+
+[node name="EnemySpawner13" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(308, -206)
+
+[node name="EnemySpawner14" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(361, -209)
+
+[node name="EnemySpawner15" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(437, -206)
+
+[node name="EnemySpawner16" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(509, -245)
+
+[node name="EnemySpawner17" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(395, -252)
+
+[node name="EnemySpawner18" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(286, -262)
+
+[node name="EnemySpawner19" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(174, -251)
+
+[node name="EnemySpawner20" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(268, -312)
+
+[node name="EnemySpawner21" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(349, -317)
+
+[node name="EnemySpawner22" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(449, -308)
+
+[node name="EnemySpawner23" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(373, -354)
+
+[node name="EnemySpawner24" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(308, -349)
+
+[node name="EnemySpawner25" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(351, -412)
+
+[node name="EnemySpawner26" parent="Enemies" instance=ExtResource("6_mqkns")]
+position = Vector2(488, -407)

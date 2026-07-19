@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cgenacj0tans2"]
+
+[ext_resource type="Texture2D" uid="uid://w88tq67yp7a0" path="res://assets/textures/tower/player_tower.png" id="1_mg2hd"]
+[ext_resource type="Script" uid="uid://860emg48exbv" path="res://scripts/tower.gd" id="1_r21n7"]
+
+[node name="Tower" type="Node2D" unique_id=1164314943]
+script = ExtResource("1_r21n7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1495369541]
+texture = ExtResource("1_mg2hd")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1875374758]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox" unique_id=1763546377]
+polygon = PackedVector2Array(-16, -12, -2, -18, 2, -18, 16, -12, 16, 3, 13, 6, 13, 10, 16, 13, 16, 24, -16, 24, -16, 13, -13, 10, -13, 6, -16, 3)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

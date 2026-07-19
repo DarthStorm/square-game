@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bimc6rrd7jev2"]
+
+[ext_resource type="Script" uid="uid://gxe3jgqplh27" path="res://scripts/game/player.gd" id="1_lvxji"]
+[ext_resource type="Texture2D" uid="uid://snbqj6t4elqy" path="res://assets/textures/player/player.png" id="2_p47bc"]
+[ext_resource type="PackedScene" uid="uid://bebow5txhpbg" path="res://scenes/player/sword.tscn" id="3_75vfm"]
+[ext_resource type="PackedScene" uid="uid://b4kcops3qy22j" path="res://scenes/ui/health_bar.tscn" id="4_0owmy"]
+[ext_resource type="Theme" uid="uid://o4k7cbp4wtsm" path="res://themes/main.tres" id="5_p47bc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_p47bc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=38681195]
+collision_layer = 2
+collision_mask = 5
+floor_block_on_wall = false
+script = ExtResource("1_lvxji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815634333]
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1449805657]
+sprite_frames = SubResource("SpriteFrames_qhqgy")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=471082432]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="Sword" parent="." unique_id=1164807024 instance=ExtResource("3_75vfm")]
+position = Vector2(8, 0)
+
+[node name="HealthBar" parent="." unique_id=248275420 groups=["healthbar"] instance=ExtResource("4_0owmy")]
+offset_top = -16.0
+offset_bottom = -16.0
+
+[node name="CoordsDisplay" type="Label" parent="." unique_id=1484516126]
+offset_left = -21.0
+offset_top = -31.0
+offset_right = 147.0
+offset_bottom = 13.0
+scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
+theme = ExtResource("5_p47bc")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
